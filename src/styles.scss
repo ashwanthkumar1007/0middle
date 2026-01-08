@@ -1,0 +1,105 @@
+@import './styles/variables';
+@import './styles/mixins';
+
+// Reset and base styles
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+  line-height: $line-height-normal;
+  color: $text-dark;
+  background-color: $bg-primary;
+  min-height: 100vh;
+}
+
+// Typography
+h1, h2, h3, h4, h5, h6 {
+  font-weight: $font-weight-bold;
+  line-height: $line-height-tight;
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+// Links
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: opacity $transition-fast;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+// Buttons
+button {
+  font-family: inherit;
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+// Images
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+// Focus styles for accessibility
+:focus-visible {
+  outline: 3px solid rgba(255, 255, 255, 0.8);
+  outline-offset: 2px;
+}
+
+// Remove focus outline for mouse users
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+// Utility classes
+.sr-only {
+  @include sr-only;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 $spacing-md;
+}
+
+// Scrollbar styling (optional)
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: $gray-100;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $gray-600;
+  border-radius: $border-radius-sm;
+
+  &:hover {
+    background: $gray-800;
+  }
+}

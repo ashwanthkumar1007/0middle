@@ -1,0 +1,41 @@
+<main class="home-page">
+  <div class="home-page__container">
+    <!-- Branding Section -->
+    <header class="home-page__header">
+      <div class="home-page__logo">
+        <div class="home-page__logo-circle">
+          <img 
+            src="assets/images/omiddle-logo.jpg" 
+            alt="O Middle Logo" 
+            class="home-page__logo-image"
+          />
+        </div>
+      </div>
+      
+      <h1 class="home-page__app-name">O Middle</h1>
+      
+      <p class="home-page__tagline">
+        Connecting farmers directly to consumers
+      </p>
+    </header>
+
+    <!-- Role Selection Section -->
+    <section class="home-page__selection" aria-label="Select your role">
+      <div class="home-page__cards">
+        <app-role-selection-card
+          *ngFor="let card of roleCards"
+          [title]="card.title"
+          [subtitle]="card.subtitle"
+          [icon]="card.icon"
+          [themeColor]="card.themeColor"
+          [route]="card.route">
+        </app-role-selection-card>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="home-page__footer">
+      <p class="home-page__footer-text">fair prices, zero middlemen</p>
+    </footer>
+  </div>
+</main>

@@ -1,0 +1,77 @@
+// Mixins for responsive design
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == 'sm' {
+    @media (min-width: #{$breakpoint-sm}) {
+      @content;
+    }
+  } @else if $breakpoint == 'md' {
+    @media (min-width: #{$breakpoint-md}) {
+      @content;
+    }
+  } @else if $breakpoint == 'lg' {
+    @media (min-width: #{$breakpoint-lg}) {
+      @content;
+    }
+  } @else if $breakpoint == 'xl' {
+    @media (min-width: #{$breakpoint-xl}) {
+      @content;
+    }
+  }
+}
+
+// Flexbox centering
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// Card style
+@mixin card {
+  background: $bg-card;
+  border-radius: $border-radius-md;
+  box-shadow: $shadow-md;
+  transition: all $transition-base;
+}
+
+// Hover lift effect
+@mixin hover-lift {
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: $shadow-hover;
+  }
+}
+
+// Focus visible outline for accessibility
+@mixin focus-visible {
+  &:focus-visible {
+    outline: 3px solid rgba(255, 255, 255, 0.8);
+    outline-offset: 2px;
+  }
+}
+
+// Touch target size (minimum 44x44px for accessibility)
+@mixin touch-target {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+// Truncate text
+@mixin truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// Screen reader only (visually hidden but accessible)
+@mixin sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

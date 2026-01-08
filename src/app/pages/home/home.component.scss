@@ -1,0 +1,137 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.home-page {
+  min-height: 100vh;
+  background-color: $bg-primary;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-md;
+  
+  @include respond-to('md') {
+    padding: $spacing-lg;
+  }
+
+  &__container {
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $spacing-xl;
+
+    @include respond-to('md') {
+      gap: $spacing-2xl;
+    }
+  }
+
+  // Branding Section
+  &__header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $spacing-md;
+    text-align: center;
+  }
+
+  &__logo {
+    margin-bottom: $spacing-sm;
+  }
+
+  &__logo-circle {
+    @include flex-center;
+    width: $logo-size-mobile;
+    height: $logo-size-mobile;
+    background-color: $white;
+    border-radius: $border-radius-circle;
+    box-shadow: $shadow-lg;
+    overflow: hidden;
+    
+    @include respond-to('md') {
+      width: $logo-size-desktop;
+      height: $logo-size-desktop;
+    }
+  }
+
+  &__logo-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  &__logo-letter {
+    font-size: 2.5rem;
+    font-weight: $font-weight-bold;
+    color: $brand-green;
+    line-height: 1;
+    
+    @include respond-to('md') {
+      font-size: 3.5rem;
+    }
+  }
+
+  &__app-name {
+    font-size: $font-size-3xl;
+    font-weight: $font-weight-bold;
+    color: $text-primary;
+    margin: 0;
+    
+    @include respond-to('md') {
+      font-size: $font-size-4xl;
+    }
+  }
+
+  &__tagline {
+    font-size: $font-size-base;
+    color: $text-secondary;
+    font-weight: $font-weight-normal;
+    margin: 0;
+    
+    @include respond-to('md') {
+      font-size: $font-size-lg;
+    }
+  }
+
+  // Role Selection Section
+  &__selection {
+    width: 100%;
+  }
+
+  &__cards {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-md;
+    align-items: center;
+    width: 100%;
+    
+    @include respond-to('md') {
+      gap: $spacing-lg;
+    }
+  }
+
+  // Footer
+  &__footer {
+    margin-top: auto;
+    padding-top: $spacing-lg;
+  }
+
+  &__footer-text {
+    font-size: $font-size-sm;
+    color: $text-secondary;
+    font-weight: $font-weight-normal;
+    text-align: center;
+    
+    @include respond-to('md') {
+      font-size: $font-size-base;
+    }
+  }
+
+  &__logo-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; // or 'cover' if you want it to fill the circle
+    border-radius: 50%; // Makes the image circular
+  }
+}

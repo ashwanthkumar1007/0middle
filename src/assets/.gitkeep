@@ -1,0 +1,15 @@
+# O Middle - Assets
+
+This folder contains static assets for the application.
+
+## Structure
+
+- `/images` - Image files
+- `/icons` - Icon files
+- `/fonts` - Custom fonts (if needed)
+
+## Guidelines
+
+- Optimize images before adding them
+- Use SVG for icons when possible
+- Keep file sizes minimal for better performance

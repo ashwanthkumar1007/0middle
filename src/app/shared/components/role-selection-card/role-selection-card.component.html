@@ -1,0 +1,19 @@
+<div 
+  class="role-card"
+  [class.role-card--green]="themeColor === 'green'"
+  [class.role-card--blue]="themeColor === 'blue'"
+  (click)="handleCardClick()"
+  (keydown)="handleKeyDown($event)"
+  tabindex="0"
+  role="button"
+  [attr.aria-label]="title + ': ' + subtitle">
+  
+  <div class="role-card__icon-container" [class.role-card__icon-container--green]="themeColor === 'green'" [class.role-card__icon-container--blue]="themeColor === 'blue'">
+    <span class="role-card__icon" role="img" [attr.aria-label]="icon">{{ icon }}</span>
+  </div>
+
+  <div class="role-card__content">
+    <h2 class="role-card__title">{{ title }}</h2>
+    <p class="role-card__subtitle">{{ subtitle }}</p>
+  </div>
+</div>
