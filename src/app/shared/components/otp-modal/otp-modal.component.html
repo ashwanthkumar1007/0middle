@@ -1,0 +1,75 @@
+<div class="modal-overlay" (click)="onClose()">
+  <div class="modal-container" (click)="$event.stopPropagation()">
+    <!-- Header -->
+    <div class="modal-header">
+      <h2 class="modal-title">Enter OTP</h2>
+      <button 
+        type="button" 
+        class="modal-close"
+        (click)="onClose()"
+        aria-label="Close modal">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
+    <!-- Content -->
+    <div class="modal-content">
+      <p class="modal-subtitle">
+        We've sent a verification code to your mobile number
+      </p>
+
+      <!-- OTP Input Form -->
+      <form [formGroup]="otpForm" class="otp-form">
+        <div class="otp-inputs">
+          <input
+            *ngFor="let digit of [1, 2, 3, 4, 5, 6]; let i = index"
+            type="tel"
+            inputmode="numeric"
+            maxlength="1"
+            [id]="'otp-digit-' + digit"
+            [formControlName]="'digit' + digit"
+            class="otp-input"
+            [class.otp-input--error]="errorMessage"
+            (input)="onOtpInput($event, digit)"
+            (keydown)="onKeyDown($event, digit)"
+            (paste)="i === 0 ? onPaste($event) : null"
+            [attr.aria-label]="'OTP digit ' + digit"
+            autocomplete="one-time-code"
+          />
+        </div>
+
+        <!-- Error Message -->
+        <div *ngIf="errorMessage" class="error-message" role="alert">
+          {{ errorMessage }}
+        </div>
+
+        <!-- Timer -->
+        <div class="timer" *ngIf="remainingTime > 0">
+          <span class="timer-icon">⏱️</span>
+          <span class="timer-text">Valid for {{ formattedTime }}</span>
+        </div>
+
+        <!-- Verify Button -->
+        <button
+          type="button"
+          class="btn-verify"
+          [disabled]="otpForm.invalid || isVerifying"
+          (click)="onVerifyOtp()">
+          <span *ngIf="!isVerifying">Verify OTP</span>
+          <span *ngIf="isVerifying" class="loading-spinner">
+            <span class="spinner"></span>
+            Verifying...
+          </span>
+        </button>
+      </form>
+
+      <!-- Help Text -->
+      <p class="help-text">
+        Didn't receive the code? 
+        <button type="button" class="link-button" (click)="onClose()">
+          Try again
+        </button>
+      </p>
+    </div>
+  </div>
+</div>

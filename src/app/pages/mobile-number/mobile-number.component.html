@@ -1,0 +1,97 @@
+<main class="mobile-page">
+  <div class="mobile-page__container">
+    <!-- Role Icon -->
+    <div class="mobile-page__icon-wrapper">
+      <div 
+        class="mobile-page__icon"
+        [class.mobile-page__icon--green]="roleColor === 'green'"
+        [class.mobile-page__icon--blue]="roleColor === 'blue'">
+        <span class="mobile-page__icon-emoji" role="img" [attr.aria-label]="roleTitle">
+          {{ roleIcon }}
+        </span>
+      </div>
+    </div>
+
+    <!-- Card -->
+    <div class="mobile-page__card">
+      <!-- Header -->
+      <div class="mobile-page__header">
+        <h1 class="mobile-page__title">Enter Mobile Number</h1>
+        <p class="mobile-page__subtitle">
+          We'll send you a verification code
+        </p>
+      </div>
+
+      <!-- Form -->
+      <form [formGroup]="mobileForm" class="mobile-form">
+        <div class="form-group">
+          <label for="mobileNumber" class="form-label">
+            Mobile Number
+          </label>
+          
+          <div class="input-wrapper">
+            <span class="input-prefix">+91</span>
+            <input
+              type="tel"
+              id="mobileNumber"
+              formControlName="mobileNumber"
+              class="form-input"
+              [class.form-input--error]="mobileErrorMessage"
+              placeholder="9876543210"
+              inputmode="numeric"
+              maxlength="10"
+              (input)="onMobileInput($event)"
+              autocomplete="tel-national"
+              [attr.aria-invalid]="mobileErrorMessage ? 'true' : 'false'"
+              [attr.aria-describedby]="mobileErrorMessage ? 'mobile-error' : null"
+            />
+          </div>
+
+          <!-- Error Message -->
+          <div 
+            *ngIf="mobileErrorMessage" 
+            id="mobile-error"
+            class="error-message"
+            role="alert">
+            {{ mobileErrorMessage }}
+          </div>
+
+          <!-- General Error -->
+          <div 
+            *ngIf="errorMessage" 
+            class="error-message"
+            role="alert">
+            {{ errorMessage }}
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <button
+          type="button"
+          class="btn-submit"
+          [disabled]="mobileForm.invalid || isLoading"
+          (click)="onGetOtp()">
+          <span *ngIf="!isLoading">Get OTP</span>
+          <span *ngIf="isLoading" class="loading-content">
+            <span class="spinner"></span>
+            Sending OTP...
+          </span>
+        </button>
+
+        <!-- Footer Text -->
+        <p class="form-footer">
+          By continuing, you agree to our 
+          <a href="#" class="form-link">Terms of Service</a> and 
+          <a href="#" class="form-link">Privacy Policy</a>
+        </p>
+      </form>
+    </div>
+  </div>
+</main>
+
+<!-- OTP Modal -->
+<app-otp-modal
+  *ngIf="showOtpModal"
+  (otpVerified)="onOtpVerified()"
+  (closeModal)="onCloseModal()">
+</app-otp-modal>

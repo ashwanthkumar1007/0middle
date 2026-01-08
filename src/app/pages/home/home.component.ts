@@ -19,14 +19,14 @@ export class HomeComponent {
       subtitle: 'I want to sell my staples',
       icon: '🌾',
       themeColor: 'green',
-      route: '/seller'
+      route: '/auth/mobile?role=farmer'
     },
     {
       title: 'Consumer / Buyer',
       subtitle: 'I want to buy staples',
       icon: '🛒',
       themeColor: 'blue',
-      route: '/consumer'
+      route: '/auth/mobile?role=consumer'
     }
   ];
 }

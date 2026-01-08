@@ -1,0 +1,259 @@
+@import '../../../../styles/variables';
+@import '../../../../styles/mixins';
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-md;
+  z-index: $z-index-modal;
+  animation: fadeIn 200ms ease-in-out;
+}
+
+.modal-container {
+  background: $white;
+  border-radius: $border-radius-lg;
+  box-shadow: $shadow-lg;
+  max-width: 440px;
+  width: 100%;
+  animation: slideUp 300ms ease-out;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: $spacing-lg $spacing-lg $spacing-md;
+  border-bottom: 1px solid $gray-200;
+}
+
+.modal-title {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  color: $text-dark;
+  margin: 0;
+}
+
+.modal-close {
+  @include touch-target;
+  background: none;
+  border: none;
+  font-size: $font-size-3xl;
+  line-height: 1;
+  color: $gray-600;
+  cursor: pointer;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: $border-radius-sm;
+  transition: all $transition-fast;
+
+  &:hover {
+    background-color: $gray-100;
+    color: $text-dark;
+  }
+
+  @include focus-visible;
+}
+
+.modal-content {
+  padding: $spacing-lg;
+}
+
+.modal-subtitle {
+  font-size: $font-size-sm;
+  color: $text-medium;
+  text-align: center;
+  margin: 0 0 $spacing-xl;
+}
+
+.otp-form {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-lg;
+}
+
+.otp-inputs {
+  display: flex;
+  gap: $spacing-sm;
+  justify-content: center;
+  
+  @media (max-width: 400px) {
+    gap: $spacing-xs;
+  }
+}
+
+.otp-input {
+  width: 48px;
+  height: 56px;
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-semibold;
+  text-align: center;
+  border: 2px solid $gray-300;
+  border-radius: $border-radius-sm;
+  transition: all $transition-fast;
+  background: $white;
+  color: $text-dark;
+
+  @media (max-width: 400px) {
+    width: 42px;
+    height: 52px;
+    font-size: $font-size-xl;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: $brand-green;
+    box-shadow: 0 0 0 3px rgba($brand-green, 0.1);
+  }
+
+  &--error {
+    border-color: #dc3545;
+  }
+
+  &:disabled {
+    background-color: $gray-100;
+    cursor: not-allowed;
+  }
+}
+
+.error-message {
+  color: #dc3545;
+  font-size: $font-size-sm;
+  text-align: center;
+  margin: -$spacing-sm 0 0;
+  animation: shake 300ms ease-in-out;
+}
+
+.timer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-xs;
+  font-size: $font-size-sm;
+  color: $text-medium;
+}
+
+.timer-icon {
+  font-size: $font-size-base;
+}
+
+.btn-verify {
+  @include touch-target;
+  width: 100%;
+  padding: $spacing-md $spacing-lg;
+  background-color: $brand-green;
+  color: $white;
+  border: none;
+  border-radius: $border-radius-sm;
+  font-size: $font-size-base;
+  font-weight: $font-weight-semibold;
+  cursor: pointer;
+  transition: all $transition-base;
+
+  &:hover:not(:disabled) {
+    background-color: $brand-green-light;
+    transform: translateY(-2px);
+    box-shadow: $shadow-md;
+  }
+
+  &:active:not(:disabled) {
+    transform: translateY(0);
+  }
+
+  &:disabled {
+    background-color: $gray-300;
+    color: $gray-600;
+    cursor: not-allowed;
+  }
+
+  @include focus-visible;
+}
+
+.loading-spinner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-sm;
+}
+
+.spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: $white;
+  border-radius: 50%;
+  animation: spin 600ms linear infinite;
+}
+
+.help-text {
+  text-align: center;
+  font-size: $font-size-sm;
+  color: $text-medium;
+  margin: $spacing-md 0 0;
+}
+
+.link-button {
+  background: none;
+  border: none;
+  color: $brand-green;
+  font-weight: $font-weight-semibold;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: underline;
+
+  &:hover {
+    color: $brand-green-light;
+  }
+
+  @include focus-visible;
+}
+
+// Animations
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-8px);
+  }
+  75% {
+    transform: translateX(8px);
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
