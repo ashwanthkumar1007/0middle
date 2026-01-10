@@ -3,7 +3,7 @@
 
 .home-page {
   min-height: 100vh;
-  background-color: $bg-primary;
+  background: linear-gradient(135deg, $gray-900 0%, $gray-800 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -19,7 +19,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: $spacing-xl;
+    gap: $spacing-md;
 
     @include respond-to('md') {
       gap: $spacing-2xl;
@@ -64,7 +64,7 @@
   &__logo-letter {
     font-size: 2.5rem;
     font-weight: $font-weight-bold;
-    color: $brand-green;
+    color: $gray-900;
     line-height: 1;
     
     @include respond-to('md') {
@@ -102,7 +102,7 @@
   &__cards {
     display: flex;
     flex-direction: column;
-    gap: $spacing-md;
+    gap: $spacing-sm;
     align-items: center;
     width: 100%;
     

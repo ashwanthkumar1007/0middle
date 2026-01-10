@@ -1,0 +1,91 @@
+@import '../../../../styles/variables';
+@import '../../../../styles/mixins';
+
+.stats-card {
+  @include card;
+  padding: $spacing-md;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: $spacing-sm;
+  transition: all $transition-base;
+
+  // Small screens: horizontal layout
+  @media (min-width: 480px) {
+    flex-direction: row;
+    text-align: left;
+    padding: $spacing-lg;
+    gap: $spacing-md;
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: $shadow-lg;
+  }
+
+  &__icon {
+    @include flex-center;
+    width: 48px;
+    height: 48px;
+    border-radius: $border-radius-md;
+    font-size: $font-size-2xl;
+    flex-shrink: 0;
+
+    @media (min-width: 480px) {
+      width: 56px;
+      height: 56px;
+      font-size: $font-size-3xl;
+    }
+
+    &--green {
+      background-color: rgba($gray-900, 0.1);
+    }
+
+    &--blue {
+      background-color: rgba($brand-blue, 0.1);
+    }
+
+    &--orange {
+      background-color: rgba(#ff9800, 0.1);
+    }
+  }
+
+  &__content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__value {
+    font-size: $font-size-lg;
+    font-weight: $font-weight-bold;
+    color: $text-dark;
+    line-height: $line-height-tight;
+    margin-bottom: $spacing-xs;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    @media (min-width: 480px) {
+      font-size: $font-size-xl;
+    }
+
+    @include respond-to(tablet) {
+      font-size: $font-size-2xl;
+    }
+
+    @include respond-to(desktop) {
+      font-size: $font-size-3xl;
+    }
+  }
+
+  &__label {
+    font-size: $font-size-xs;
+    color: $text-medium;
+    font-weight: $font-weight-medium;
+
+    @media (min-width: 480px) {
+      font-size: $font-size-sm;
+    }
+  }
+}

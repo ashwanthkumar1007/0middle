@@ -6,12 +6,12 @@
   @include touch-target;
   width: 100%;
   max-width: $card-max-width;
-  padding: $spacing-lg;
+  padding: $spacing-md;
   cursor: pointer;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: $spacing-md;
+  gap: $spacing-sm;
   transition: all $transition-base;
 
   @include respond-to('md') {
@@ -32,8 +32,8 @@
 
   &__icon-container {
     @include flex-center;
-    width: $icon-container-size;
-    height: $icon-container-size;
+    width: 50px;
+    height: 50px;
     border-radius: $border-radius-sm;
     transition: transform $transition-base;
 
@@ -43,11 +43,11 @@
     }
 
     &--green {
-      background-color: $bg-farmer;
+      background-color: $gray-900;
     }
 
     &--blue {
-      background-color: $bg-consumer;
+      background-color: $gray-800;
     }
   }
 
@@ -56,7 +56,7 @@
   }
 
   &__icon {
-    font-size: $icon-size;
+    font-size: 2rem;
     line-height: 1;
 
     @include respond-to('md') {
@@ -70,7 +70,7 @@
   }
 
   &__title {
-    font-size: $font-size-xl;
+    font-size: $font-size-lg;
     font-weight: $font-weight-bold;
     color: $text-dark;
     margin-bottom: $spacing-xs;
@@ -81,7 +81,7 @@
   }
 
   &__subtitle {
-    font-size: $font-size-base;
+    font-size: $font-size-sm;
     color: $text-medium;
     font-weight: $font-weight-normal;
 

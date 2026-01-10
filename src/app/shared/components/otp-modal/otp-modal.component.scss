@@ -112,8 +112,8 @@
 
   &:focus {
     outline: none;
-    border-color: $brand-green;
-    box-shadow: 0 0 0 3px rgba($brand-green, 0.1);
+    border-color: $gray-900;
+    box-shadow: 0 0 0 3px rgba($gray-900, 0.1);
   }
 
   &--error {
@@ -151,7 +151,7 @@
   @include touch-target;
   width: 100%;
   padding: $spacing-md $spacing-lg;
-  background-color: $brand-green;
+  background-color: $gray-900;
   color: $white;
   border: none;
   border-radius: $border-radius-sm;
@@ -161,7 +161,7 @@
   transition: all $transition-base;
 
   &:hover:not(:disabled) {
-    background-color: $brand-green-light;
+    background-color: $gray-800;
     transform: translateY(-2px);
     box-shadow: $shadow-md;
   }
@@ -206,14 +206,14 @@
 .link-button {
   background: none;
   border: none;
-  color: $brand-green;
+  color: $gray-900;
   font-weight: $font-weight-semibold;
   cursor: pointer;
   padding: 0;
   text-decoration: underline;
 
   &:hover {
-    color: $brand-green-light;
+    color: $gray-800;
   }
 
   @include focus-visible;

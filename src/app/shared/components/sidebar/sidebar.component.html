@@ -1,0 +1,76 @@
+<!-- Overlay -->
+<div 
+  *ngIf="isOpen"
+  class="sidebar-overlay" 
+  (click)="onClose()">
+</div>
+
+<!-- Sidebar -->
+<aside 
+  class="sidebar" 
+  [class.sidebar--open]="isOpen"
+  (click)="onSidebarClick($event)">
+  
+  <!-- Header -->
+  <div class="sidebar__header">
+    <h2 class="sidebar__title">Profile</h2>
+    <button 
+      type="button"
+      class="sidebar__close"
+      (click)="onClose()"
+      aria-label="Close sidebar">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <!-- User Profile -->
+  <div class="sidebar__profile" *ngIf="user">
+    <div class="sidebar__avatar">
+      <span class="sidebar__avatar-icon">🌾</span>
+    </div>
+    
+    <div class="sidebar__user-info">
+      <h3 class="sidebar__user-name">{{ user.name }}</h3>
+      <div class="sidebar__user-detail">
+        <span class="sidebar__icon">📱</span>
+        <span>{{ user.mobileNumber }}</span>
+      </div>
+      <div class="sidebar__user-detail">
+        <span class="sidebar__icon">⭐</span>
+        <span>{{ user.rating }} Rating</span>
+      </div>
+    </div>
+
+    <div class="sidebar__address">
+      <span class="sidebar__icon">📍</span>
+      <p>{{ user.address }}</p>
+    </div>
+  </div>
+
+  <!-- Navigation Menu -->
+  <nav class="sidebar__nav">
+    <a href="#" class="sidebar__link" (click)="$event.preventDefault()">
+      <span class="sidebar__link-icon">👤</span>
+      <span>My Profile</span>
+    </a>
+    <a href="#" class="sidebar__link" (click)="$event.preventDefault()">
+      <span class="sidebar__link-icon">⚙️</span>
+      <span>Settings</span>
+    </a>
+    <a href="#" class="sidebar__link" (click)="$event.preventDefault()">
+      <span class="sidebar__link-icon">❓</span>
+      <span>Help & Support</span>
+    </a>
+  </nav>
+
+  <!-- Logout Button -->
+  <div class="sidebar__footer">
+    <button 
+      type="button"
+      class="sidebar__logout"
+      (click)="onLogout()">
+      <span class="sidebar__link-icon">🚪</span>
+      <span>Logout</span>
+    </button>
+  </div>
+</aside>

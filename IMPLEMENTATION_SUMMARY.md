@@ -23,7 +23,6 @@ The production-ready Angular landing page for O Middle has been successfully cre
 **Features Implemented:**
 
 - ✅ Full-screen centered layout
-- ✅ Green brand background
 - ✅ Circular logo with "O" letter (white circle, green text)
 - ✅ App name: "O Middle" (white, bold)
 - ✅ Tagline: "Connecting farmers directly to consumers"

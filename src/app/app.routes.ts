@@ -11,7 +11,12 @@ export const routes: Routes = [
   },
   {
     path: 'seller',
-    loadComponent: () => import('./pages/seller/seller.component').then(m => m.SellerComponent)
+    redirectTo: 'dashboard',
+    pathMatch: 'full'
+  },
+  {
+    path: 'dashboard',
+    loadComponent: () => import('./pages/seller-dashboard/seller-dashboard.component').then(m => m.SellerDashboardComponent)
   },
   {
     path: 'consumer',

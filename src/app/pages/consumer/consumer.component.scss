@@ -3,7 +3,7 @@
 
 .consumer-page {
   min-height: 100vh;
-  background-color: $bg-primary;
+  background-color: $white;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -16,6 +16,7 @@
     border-radius: $border-radius-lg;
     padding: $spacing-xl;
     box-shadow: $shadow-lg;
+    border: 1px solid $gray-200;
   }
 
   &__header {
@@ -25,7 +26,7 @@
 
   &__title {
     font-size: $font-size-3xl;
-    color: $brand-blue;
+    color: $gray-900;
     margin-bottom: $spacing-sm;
   }
 

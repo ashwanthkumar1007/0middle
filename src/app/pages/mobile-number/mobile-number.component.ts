@@ -137,7 +137,7 @@ export class MobileNumberComponent implements OnInit {
 
     // Navigate based on role
     if (this.userRole === 'farmer') {
-      this.router.navigate(['/seller']);
+      this.router.navigate(['/dashboard']);
     } else {
       this.router.navigate(['/consumer']);
     }

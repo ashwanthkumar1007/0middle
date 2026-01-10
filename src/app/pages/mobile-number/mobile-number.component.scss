@@ -3,7 +3,7 @@
 
 .mobile-page {
   min-height: 100vh;
-  background-color: $gray-100;
+  background-color: $white;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -39,11 +39,11 @@
     }
 
     &--green {
-      background-color: $brand-green;
+      background-color: $gray-900;
     }
 
     &--blue {
-      background-color: $brand-blue;
+      background-color: $gray-800;
     }
   }
 
@@ -147,8 +147,8 @@
 
   &:focus {
     outline: none;
-    border-color: $brand-green;
-    box-shadow: 0 0 0 3px rgba($brand-green, 0.1);
+    border-color: $gray-900;
+    box-shadow: 0 0 0 3px rgba($gray-900, 0.1);
   }
 
   &--error {
@@ -177,7 +177,7 @@
   @include touch-target;
   width: 100%;
   padding: $spacing-md $spacing-lg;
-  background-color: $brand-green;
+  background-color: $gray-900;
   color: $white;
   border: none;
   border-radius: $border-radius-sm;
@@ -193,7 +193,7 @@
   }
 
   &:hover:not(:disabled) {
-    background-color: $brand-green-light;
+    background-color: $gray-800;
     transform: translateY(-2px);
     box-shadow: $shadow-md;
   }

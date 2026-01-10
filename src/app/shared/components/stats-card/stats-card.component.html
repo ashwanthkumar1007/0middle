@@ -1,0 +1,9 @@
+<div class="stats-card" [class]="'stats-card--' + color">
+  <div class="stats-card__icon" [class]="'stats-card__icon--' + color">
+    <span role="img" [attr.aria-label]="label">{{ icon }}</span>
+  </div>
+  <div class="stats-card__content">
+    <div class="stats-card__value">{{ value }}</div>
+    <div class="stats-card__label">{{ label }}</div>
+  </div>
+</div>

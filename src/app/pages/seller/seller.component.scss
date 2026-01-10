@@ -25,7 +25,7 @@
 
   &__title {
     font-size: $font-size-3xl;
-    color: $brand-green;
+    color: $gray-900;
     margin-bottom: $spacing-sm;
   }
 
@@ -55,7 +55,7 @@
       
       &::before {
         content: "✓ ";
-        color: $brand-green;
+        color: $gray-900;
         font-weight: $font-weight-bold;
         margin-right: $spacing-xs;
       }
@@ -70,14 +70,14 @@
 
   &__back-link {
     display: inline-block;
-    color: $brand-green;
+    color: $gray-900;
     font-weight: $font-weight-semibold;
     padding: $spacing-sm $spacing-lg;
     border-radius: $border-radius-sm;
     transition: all $transition-base;
 
     &:hover {
-      background-color: rgba($brand-green, 0.1);
+      background-color: rgba($gray-900, 0.1);
     }
 
     @include focus-visible;

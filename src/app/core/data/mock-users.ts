@@ -1,0 +1,267 @@
+import { User } from '../models/user.model';
+
+/**
+ * Mock data for users - to be stored in localStorage
+ * This simulates a database of farmers/sellers
+ */
+export const MOCK_USERS: User[] = [
+  {
+    id: 'user-001',
+    name: 'Ash',
+    address: 'Village Kheda, Tehsil Merta, District Nagaur, Rajasthan - 341510',
+    mobileNumber: '9876543210',
+    rating: 4.8,
+    totalProductsSold: 1250,
+    totalSalesAmount: 485000,
+    products: [
+      {
+        productId: 'prod-001',
+        name: 'Wheat Flour',
+        imageUrl: 'https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=400',
+        unit: 'kg',
+        pricePerUnit: 45,
+        currentStock: 120,
+        unitsSold: 180,
+        createdDate: '2025-11-15'
+      },
+      {
+        productId: 'prod-002',
+        name: 'Basmati Rice',
+        imageUrl: 'https://images.unsplash.com/photo-1586201375761-83865001e31c?w=400',
+        unit: 'kg',
+        pricePerUnit: 85,
+        currentStock: 0,
+        unitsSold: 850,
+        createdDate: '2025-10-20'
+      },
+      {
+        productId: 'prod-003',
+        name: 'Toor Dal (Pigeon Peas)',
+        imageUrl: 'https://images.unsplash.com/photo-1596040033229-a0b73a0c1670?w=400',
+        unit: 'kg',
+        pricePerUnit: 120,
+        currentStock: 25,
+        unitsSold: 120,
+        createdDate: '2025-12-01'
+      },
+      {
+        productId: 'prod-015',
+        name: 'Organic Honey',
+        imageUrl: 'https://images.unsplash.com/photo-1587049352846-4a222e784720?w=400',
+        unit: 'kg',
+        pricePerUnit: 450,
+        currentStock: 45,
+        unitsSold: 85,
+        createdDate: '2025-11-28'
+      }
+    ]
+  },
+  {
+    id: 'user-002',
+    name: 'Arun',
+    address: 'Taluka Anand, District Kheda, Gujarat - 388001',
+    mobileNumber: '9123456789',
+    rating: 4.6,
+    totalProductsSold: 980,
+    totalSalesAmount: 325000,
+    products: [
+      {
+        productId: 'prod-004',
+        name: 'White Rice',
+        imageUrl: 'https://images.unsplash.com/photo-1586201375761-83865001e31c?w=400',
+        unit: 'kg',
+        pricePerUnit: 65,
+        currentStock: 150,
+        unitsSold: 450,
+        createdDate: '2025-11-01'
+      },
+      {
+        productId: 'prod-005',
+        name: 'Sugar',
+        imageUrl: 'https://images.unsplash.com/photo-1587735243615-c03f25aaff15?w=400',
+        unit: 'kg',
+        pricePerUnit: 55,
+        currentStock: 180,
+        unitsSold: 82,
+        createdDate: '2025-10-10'
+      }
+    ]
+  },
+  {
+    id: 'user-003',
+    name: 'Tom',
+    address: 'Block Gola Gokaran Nath, District Lakhimpur Kheri, Uttar Pradesh - 262802',
+    mobileNumber: '9988776655',
+    rating: 4.9,
+    totalProductsSold: 1580,
+    totalSalesAmount: 620000,
+    products: [
+      {
+        productId: 'prod-006',
+        name: 'Moong Dal (Green Gram)',
+        imageUrl: 'https://images.unsplash.com/photo-1596040033229-a0b73a0c1670?w=400',
+        unit: 'kg',
+        pricePerUnit: 130,
+        currentStock: 95,
+        unitsSold: 95,
+        createdDate: '2025-09-15'
+      },
+      {
+        productId: 'prod-007',
+        name: 'Chana Dal (Bengal Gram)',
+        imageUrl: 'https://images.unsplash.com/photo-1599909186211-677656b84f99?w=400',
+        unit: 'kg',
+        pricePerUnit: 110,
+        currentStock: 65,
+        unitsSold: 320,
+        createdDate: '2025-11-20'
+      },
+      {
+        productId: 'prod-008',
+        name: 'Sona Masoori Rice',
+        imageUrl: 'https://images.unsplash.com/photo-1586201375761-83865001e31c?w=400',
+        unit: 'kg',
+        pricePerUnit: 70,
+        currentStock: 0,
+        unitsSold: 1200,
+        createdDate: '2025-12-05'
+      },
+      {
+        productId: 'prod-016',
+        name: 'Turmeric Powder',
+        imageUrl: 'https://images.unsplash.com/photo-1615485500704-8e990f9900f7?w=400',
+        unit: 'kg',
+        pricePerUnit: 280,
+        currentStock: 55,
+        unitsSold: 165,
+        createdDate: '2025-12-03'
+      }
+    ]
+  },
+  {
+    id: 'user-004',
+    name: 'Dhinesh',
+    address: 'Mandal Medak, District Medak, Telangana - 502110',
+    mobileNumber: '9445566778',
+    rating: 4.7,
+    totalProductsSold: 720,
+    totalSalesAmount: 280000,
+    products: [
+      {
+        productId: 'prod-009',
+        name: 'Cooking Oil (Sunflower)',
+        imageUrl: 'https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=400',
+        unit: 'kg',
+        pricePerUnit: 180,
+        currentStock: 85,
+        unitsSold: 380,
+        createdDate: '2025-10-25'
+      },
+      {
+        productId: 'prod-010',
+        name: 'Urad Dal (Black Gram)',
+        imageUrl: 'https://images.unsplash.com/photo-1599909186211-677656b84f99?w=400',
+        unit: 'kg',
+        pricePerUnit: 140,
+        currentStock: 42,
+        unitsSold: 210,
+        createdDate: '2025-11-10'
+      },
+      {
+        productId: 'prod-017',
+        name: 'Jaggery (Gur)',
+        imageUrl: 'https://images.unsplash.com/photo-1621939514649-280e2ee25f60?w=400',
+        unit: 'kg',
+        pricePerUnit: 75,
+        currentStock: 190,
+        unitsSold: 240,
+        createdDate: '2025-11-18'
+      }
+    ]
+  },
+  {
+    id: 'user-005',
+    name: 'Sam',
+    address: 'Tehsil Malkapur, District Buldana, Maharashtra - 443101',
+    mobileNumber: '9001122334',
+    rating: 4.5,
+    totalProductsSold: 560,
+    totalSalesAmount: 195000,
+    products: [
+      {
+        productId: 'prod-011',
+        name: 'Iodized Salt',
+        imageUrl: 'https://images.unsplash.com/photo-1594498653385-d5172c532c00?w=400',
+        unit: 'kg',
+        pricePerUnit: 25,
+        currentStock: 280,
+        unitsSold: 95,
+        createdDate: '2025-11-05'
+      },
+      {
+        productId: 'prod-012',
+        name: 'Masoor Dal (Red Lentils)',
+        imageUrl: 'https://images.unsplash.com/photo-1599909186211-677656b84f99?w=400',
+        unit: 'kg',
+        pricePerUnit: 95,
+        currentStock: 120,
+        unitsSold: 280,
+        createdDate: '2025-12-01'
+      },
+      {
+        productId: 'prod-018',
+        name: 'Organic Cane Sugar',
+        imageUrl: 'https://images.unsplash.com/photo-1587735243615-c03f25aaff15?w=400',
+        unit: 'kg',
+        pricePerUnit: 65,
+        currentStock: 210,
+        unitsSold: 195,
+        createdDate: '2025-11-22'
+      }
+    ]
+  },
+  {
+    id: 'user-006',
+    name: 'Raj',
+    address: 'Block Saran, District Chapra, Bihar - 841301',
+    mobileNumber: '9667788990',
+    rating: 4.4,
+    totalProductsSold: 890,
+    totalSalesAmount: 340000,
+    products: [
+      {
+        productId: 'prod-013',
+        name: 'Jowar Flour (Sorghum)',
+        imageUrl: 'https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=400',
+        unit: 'kg',
+        pricePerUnit: 50,
+        currentStock: 95,
+        unitsSold: 420,
+        createdDate: '2025-10-18'
+      },
+      {
+        productId: 'prod-014',
+        name: 'Rajma (Kidney Beans)',
+        imageUrl: 'https://images.unsplash.com/photo-1599909186211-677656b84f99?w=400',
+        unit: 'kg',
+        pricePerUnit: 115,
+        currentStock: 35,
+        unitsSold: 155,
+        createdDate: '2025-11-25'
+      }
+    ]
+  }
+];
+
+/**
+ * Initialize localStorage with mock users
+ * This runs once to populate the "database"
+ */
+export function initializeMockData(): void {
+  const existingData = localStorage.getItem('omiddle_users_db');
+  
+  if (!existingData) {
+    localStorage.setItem('omiddle_users_db', JSON.stringify(MOCK_USERS));
+    console.log('✅ Mock user database initialized');
+  }
+}

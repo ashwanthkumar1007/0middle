@@ -1,0 +1,41 @@
+<div class="product-card" (click)="onViewDetails()" [class.product-card--sold-out]="isSoldOut">
+  <!-- Sold Out Badge -->
+  <div *ngIf="isSoldOut" class="product-card__badge">
+    Sold Out
+  </div>
+
+  <!-- Product Image -->
+  <div class="product-card__image-wrapper">
+    <img 
+      [src]="product.imageUrl" 
+      [alt]="product.name"
+      class="product-card__image"
+      loading="lazy"
+    />
+  </div>
+
+  <!-- Product Info -->
+  <div class="product-card__content">
+    <h3 class="product-card__name">{{ product.name }}</h3>
+    
+    <div class="product-card__details">
+      <div class="product-card__quantity">
+        <span class="product-card__icon">📦</span>
+        <span>{{ formattedQuantity }}</span>
+      </div>
+      
+      <div class="product-card__price">
+        {{ formattedPrice }}
+        <span class="product-card__unit">/ {{ product.unit }}</span>
+      </div>
+    </div>
+
+    <button 
+      type="button"
+      class="product-card__btn"
+      (click)="onViewDetails()"
+      [attr.aria-label]="'View details of ' + product.name">
+      View Details
+    </button>
+  </div>
+</div>

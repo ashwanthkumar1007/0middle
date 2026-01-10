@@ -1,0 +1,192 @@
+@import '../../../../styles/variables';
+@import '../../../../styles/mixins';
+
+.sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: $z-index-modal-backdrop;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  bottom: 0;
+  width: 85%;
+  max-width: 320px;
+  background-color: $white;
+  box-shadow: $shadow-lg;
+  z-index: $z-index-modal;
+  transition: left $transition-base;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+
+  &--open {
+    left: 0;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: $spacing-lg;
+    border-bottom: 1px solid $gray-200;
+  }
+
+  &__title {
+    font-size: $font-size-xl;
+    font-weight: $font-weight-bold;
+    color: $text-dark;
+    margin: 0;
+  }
+
+  &__close {
+    @include touch-target;
+    background: none;
+    border: none;
+    font-size: $font-size-3xl;
+    line-height: 1;
+    color: $gray-600;
+    cursor: pointer;
+    padding: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: $border-radius-sm;
+    transition: all $transition-fast;
+
+    &:hover {
+      background-color: $gray-100;
+      color: $text-dark;
+    }
+
+    @include focus-visible;
+  }
+
+  &__profile {
+    padding: $spacing-lg;
+    border-bottom: 1px solid $gray-200;
+  }
+
+  &__avatar {
+    @include flex-center;
+    width: 80px;
+    height: 80px;
+    background-color: rgba($gray-900, 0.1);
+    border-radius: 50%;
+    margin: 0 auto $spacing-md;
+  }
+
+  &__avatar-icon {
+    font-size: 2.5rem;
+  }
+
+  &__user-info {
+    text-align: center;
+    margin-bottom: $spacing-md;
+  }
+
+  &__user-name {
+    font-size: $font-size-lg;
+    font-weight: $font-weight-bold;
+    color: $text-dark;
+    margin: 0 0 $spacing-sm;
+  }
+
+  &__user-detail {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: $spacing-xs;
+    font-size: $font-size-sm;
+    color: $text-medium;
+    margin-bottom: $spacing-xs;
+  }
+
+  &__icon {
+    font-size: $font-size-base;
+  }
+
+  &__address {
+    display: flex;
+    gap: $spacing-xs;
+    padding: $spacing-md;
+    background-color: $gray-100;
+    border-radius: $border-radius-sm;
+    font-size: $font-size-xs;
+    color: $text-medium;
+    line-height: $line-height-relaxed;
+
+    p {
+      margin: 0;
+      flex: 1;
+    }
+  }
+
+  &__nav {
+    flex: 1;
+    padding: $spacing-md 0;
+  }
+
+  &__link {
+    @include touch-target;
+    display: flex;
+    align-items: center;
+    gap: $spacing-md;
+    padding: $spacing-md $spacing-lg;
+    color: $text-dark;
+    text-decoration: none;
+    font-size: $font-size-base;
+    font-weight: $font-weight-medium;
+    transition: all $transition-fast;
+
+    &:hover {
+      background-color: $gray-100;
+      color: $gray-900;
+    }
+
+    @include focus-visible;
+  }
+
+  &__link-icon {
+    font-size: $font-size-xl;
+    width: 24px;
+    text-align: center;
+  }
+
+  &__footer {
+    padding: $spacing-lg;
+    border-top: 1px solid $gray-200;
+  }
+
+  &__logout {
+    @include touch-target;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: $spacing-sm;
+    width: 100%;
+    padding: $spacing-md;
+    background-color: #dc3545;
+    color: $white;
+    border: none;
+    border-radius: $border-radius-sm;
+    font-size: $font-size-base;
+    font-weight: $font-weight-semibold;
+    cursor: pointer;
+    transition: all $transition-fast;
+
+    &:hover {
+      background-color: darken(#dc3545, 10%);
+    }
+
+    @include focus-visible;
+  }
+}

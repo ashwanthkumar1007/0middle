@@ -1,0 +1,96 @@
+<!-- Loading State -->
+<div *ngIf="isLoading" class="loading">
+  <div class="loading__spinner"></div>
+  <p>Loading your dashboard...</p>
+</div>
+
+<!-- Dashboard Content -->
+<div *ngIf="!isLoading && user" class="dashboard">
+  
+  <!-- Header -->
+  <header class="dashboard__header">
+    <div style="display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.5rem;">
+      <button 
+        type="button"
+        class="dashboard__menu-btn"
+        (click)="openSidebar()"
+        aria-label="Open menu">
+        <span class="hamburger">☰</span>
+      </button>
+
+      <div class="dashboard__greeting">
+        <h1 class="dashboard__title">Hello, {{ user.name }}! 👋</h1>
+        <p class="dashboard__subtitle">Manage your products and track your sales</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- Stats Cards -->
+  <section class="dashboard__stats">
+    <app-stats-card
+      *ngFor="let stat of statsCards"
+      [icon]="stat.icon"
+      [value]="stat.value"
+      [label]="stat.label"
+      [color]="stat.color">
+    </app-stats-card>
+  </section>
+
+  <!-- Add Product Button -->
+  <div class="dashboard__add-product-section">
+    <button 
+      type="button"
+      class="dashboard__add-btn"
+      (click)="openAddProductModal()">
+      <span class="add-icon">+</span>
+      <span class="add-text">Add Product</span>
+    </button>
+  </div>
+
+  <!-- Products Section -->
+  <section class="dashboard__products">
+    <h2 class="dashboard__section-title">Your Products</h2>
+
+    <!-- Products Grid -->
+    <div class="products-grid" *ngIf="user.products.length > 0">
+      <app-product-card
+        *ngFor="let product of user.products"
+        [product]="product"
+        (viewDetails)="openProductModal(product)">
+      </app-product-card>
+    </div>
+
+    <!-- Empty State -->
+    <div class="empty-state" *ngIf="user.products.length === 0">
+      <div class="empty-state__icon">📦</div>
+      <h3 class="empty-state__title">No Products Yet</h3>
+      <p class="empty-state__message">
+        Start adding your products to connect with buyers and grow your business.
+      </p>
+      <button 
+        type="button"
+        class="btn btn--primary"
+        (click)="openAddProductModal()">
+        Add Your First Product
+      </button>
+    </div>
+  </section>
+</div>
+
+<!-- Sidebar -->
+<app-sidebar
+  [isOpen]="isSidebarOpen"
+  [user]="user"
+  (closeSidebar)="closeSidebar()"
+  (logout)="onLogout()">
+</app-sidebar>
+
+<!-- Product Details Modal -->
+<app-product-details-modal
+  [isOpen]="isProductModalOpen"
+  [product]="selectedProduct"
+  [isEditMode]="isEditMode"
+  (close)="closeProductModal()"
+  (save)="selectedProduct?.productId ? onSaveProduct($event) : onAddProduct($event)"
+  (delete)="onDeleteProduct($event)">
+</app-product-details-modal>

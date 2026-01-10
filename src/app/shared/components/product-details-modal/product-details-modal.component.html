@@ -1,0 +1,190 @@
+<!-- Modal Overlay -->
+<div 
+  *ngIf="isOpen"
+  class="modal-overlay" 
+  (click)="onClose()">
+  
+  <!-- Modal Content -->
+  <div 
+    class="modal" 
+    (click)="onModalClick($event)">
+    
+    <!-- Header -->
+    <div class="modal__header">
+      <h2 class="modal__title">
+        {{ isEditMode ? 'Edit Product' : 'Product Details' }}
+      </h2>
+      <button 
+        type="button"
+        class="modal__close"
+        (click)="onClose()"
+        aria-label="Close modal">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
+    <!-- Product Image -->
+    <div class="modal__image-container" *ngIf="product">
+      <img 
+        [src]="product.imageUrl" 
+        [alt]="product.name"
+        class="modal__image">
+    </div>
+
+    <!-- Form -->
+    <form [formGroup]="productForm" class="modal__form">
+      
+      <!-- Product Name -->
+      <div class="form-group">
+        <label class="form-label" for="productName">Product Name</label>
+        <input 
+          type="text"
+          id="productName"
+          class="form-input"
+          formControlName="name"
+          placeholder="e.g., Organic Wheat"
+          [class.form-input--error]="hasError('name', 'required') || hasError('name', 'minlength')">
+        <span class="form-error" *ngIf="hasError('name', 'required')">
+          Product name is required
+        </span>
+        <span class="form-error" *ngIf="hasError('name', 'minlength')">
+          Product name must be at least 3 characters
+        </span>
+      </div>
+
+      <!-- Image Upload -->
+      <div class="form-group" *ngIf="isEditMode">
+        <label class="form-label">Product Image</label>
+        <div class="image-upload">
+          <input 
+            type="file"
+            #fileInput
+            accept="image/*"
+            capture="environment"
+            (change)="onImageSelected($event)"
+            style="display: none;">
+          <button 
+            type="button"
+            class="image-upload__btn"
+            (click)="fileInput.click()">
+            <span class="image-upload__icon">📷</span>
+            <span>{{ product?.imageUrl ? 'Change Photo' : 'Take Photo / Upload' }}</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Quantity and Unit -->
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label" for="quantity">Current Stock</label>
+          <input 
+            type="number"
+            id="quantity"
+            class="form-input"
+            formControlName="currentStock"
+            placeholder="100"
+            min="0"
+            [class.form-input--error]="hasError('currentStock', 'required') || hasError('currentStock', 'min')">
+          <span class="form-error" *ngIf="hasError('currentStock', 'required')">
+            Required
+          </span>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="unit">Unit</label>
+          <select 
+            id="unit"
+            class="form-input"
+            formControlName="unit">
+            <option value="kg">kg</option>
+            <option value="quintal">quintal</option>
+            <option value="ton">ton</option>
+            <option value="bag">bag</option>
+            <option value="piece">piece</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Price Per Unit -->
+      <div class="form-group">
+        <label class="form-label" for="price">Price per Unit (₹)</label>
+        <input 
+          type="number"
+          id="price"
+          class="form-input"
+          formControlName="pricePerUnit"
+          placeholder="50"
+          min="0.01"
+          step="0.01"
+          [class.form-input--error]="hasError('pricePerUnit', 'required') || hasError('pricePerUnit', 'min')">
+        <span class="form-error" *ngIf="hasError('pricePerUnit', 'required')">
+          Price is required
+        </span>
+        <span class="form-error" *ngIf="hasError('pricePerUnit', 'min')">
+          Price must be greater than 0
+        </span>
+      </div>
+
+      <!-- Units Sold -->
+      <div class="form-group">
+        <label class="form-label" for="sold">Units Sold</label>
+        <input 
+          type="number"
+          id="sold"
+          class="form-input"
+          formControlName="unitsSold"
+          placeholder="10"
+          min="0">
+      </div>
+
+      <!-- Revenue (Read-only) -->
+      <div class="revenue-section" *ngIf="!isEditMode">
+        <div class="revenue-label">Total Revenue</div>
+        <div class="revenue-value">{{ formattedRevenue }}</div>
+      </div>
+
+      <!-- Date Added (Read-only) -->
+      <div class="info-section" *ngIf="!isEditMode && product">
+        <span class="info-label">Added on:</span>
+        <span class="info-value">{{ product.createdDate | date:'mediumDate' }}</span>
+      </div>
+    </form>
+
+    <!-- Actions -->
+    <div class="modal__actions">
+      <!-- View Mode Actions -->
+      <ng-container *ngIf="!isEditMode">
+        <button 
+          type="button"
+          class="btn btn--secondary"
+          (click)="onDelete()">
+          Delete
+        </button>
+        <button 
+          type="button"
+          class="btn btn--primary"
+          (click)="onEdit()">
+          Edit
+        </button>
+      </ng-container>
+
+      <!-- Edit Mode Actions -->
+      <ng-container *ngIf="isEditMode">
+        <button 
+          type="button"
+          class="btn btn--secondary"
+          (click)="onCancelEdit()"
+          [disabled]="isSubmitting">
+          Cancel
+        </button>
+        <button 
+          type="button"
+          class="btn btn--primary"
+          (click)="onSave()"
+          [disabled]="isSubmitting || productForm.invalid">
+          {{ isSubmitting ? 'Saving...' : 'Save Changes' }}
+        </button>
+      </ng-container>
+    </div>
+  </div>
+</div>
