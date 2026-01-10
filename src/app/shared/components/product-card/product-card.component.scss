@@ -97,6 +97,33 @@
     color: $text-medium;
   }
 
+  &__stats {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-xs;
+    margin-top: $spacing-md;
+    padding: $spacing-sm;
+    background-color: $gray-50;
+    border-radius: $border-radius-sm;
+    font-size: $font-size-xs;
+  }
+
+  &__stat {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__stat-label {
+    color: $text-medium;
+    font-weight: $font-weight-normal;
+  }
+
+  &__stat-value {
+    color: $text-dark;
+    font-weight: $font-weight-semibold;
+  }
+
   &__btn {
     @include touch-target;
     width: 100%;

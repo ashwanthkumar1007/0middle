@@ -82,7 +82,7 @@ export class UserService {
    * Calculate total products sold for a user
    */
   calculateTotalProductsSold(user: User): number {
-    return user.products.reduce((total, product) => total + product.unitsSold, 0);
+    return user.products.reduce((total, product) => total + (product.unitsSold || 0), 0);
   }
 
   /**
@@ -90,7 +90,7 @@ export class UserService {
    */
   calculateTotalSalesAmount(user: User): number {
     return user.products.reduce((total, product) => {
-      return total + (product.pricePerUnit * product.unitsSold);
+      return total + (product.pricePerUnit * (product.unitsSold || 0));
     }, 0);
   }
 

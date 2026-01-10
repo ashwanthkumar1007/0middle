@@ -22,6 +22,7 @@ export const MOCK_USERS: User[] = [
         imageUrl: getProductImageUrl('Wheat Flour'),
         unit: 'kg',
         pricePerUnit: 45,
+        initialStock: 300,
         currentStock: 120,
         unitsSold: 180,
         createdDate: '2025-11-15'
@@ -32,6 +33,7 @@ export const MOCK_USERS: User[] = [
         imageUrl: getProductImageUrl('Basmati Rice'),
         unit: 'kg',
         pricePerUnit: 85,
+        initialStock: 850,
         currentStock: 0,
         unitsSold: 850,
         createdDate: '2025-10-20'
@@ -42,6 +44,7 @@ export const MOCK_USERS: User[] = [
         imageUrl: getProductImageUrl('Toor Dal'),
         unit: 'kg',
         pricePerUnit: 120,
+        initialStock: 145,
         currentStock: 25,
         unitsSold: 120,
         createdDate: '2025-12-01'
@@ -52,6 +55,7 @@ export const MOCK_USERS: User[] = [
         imageUrl: getProductImageUrl('Organic Honey'),
         unit: 'liter',
         pricePerUnit: 450,
+        initialStock: 130,
         currentStock: 45,
         unitsSold: 85,
         createdDate: '2025-11-28'
@@ -73,6 +77,7 @@ export const MOCK_USERS: User[] = [
         imageUrl: getProductImageUrl('White Rice'),
         unit: 'kg',
         pricePerUnit: 65,
+        initialStock: 600,
         currentStock: 150,
         unitsSold: 450,
         createdDate: '2025-11-01'
@@ -83,6 +88,7 @@ export const MOCK_USERS: User[] = [
         imageUrl: getProductImageUrl('Sugar'),
         unit: 'kg',
         pricePerUnit: 55,
+        initialStock: 262,
         currentStock: 180,
         unitsSold: 82,
         createdDate: '2025-10-10'
@@ -104,6 +110,7 @@ export const MOCK_USERS: User[] = [
         imageUrl: getProductImageUrl('Moong Dal'),
         unit: 'kg',
         pricePerUnit: 130,
+        initialStock: 190,
         currentStock: 95,
         unitsSold: 95,
         createdDate: '2025-09-15'
@@ -114,6 +121,7 @@ export const MOCK_USERS: User[] = [
         imageUrl: getProductImageUrl('Chana Dal'),
         unit: 'kg',
         pricePerUnit: 110,
+        initialStock: 385,
         currentStock: 65,
         unitsSold: 320,
         createdDate: '2025-11-20'
@@ -124,6 +132,7 @@ export const MOCK_USERS: User[] = [
         imageUrl: getProductImageUrl('Sona Masoori Rice'),
         unit: 'kg',
         pricePerUnit: 70,
+        initialStock: 1200,
         currentStock: 0,
         unitsSold: 1200,
         createdDate: '2025-12-05'
@@ -134,6 +143,7 @@ export const MOCK_USERS: User[] = [
         imageUrl: getProductImageUrl('Turmeric Powder'),
         unit: 'kg',
         pricePerUnit: 280,
+        initialStock: 220,
         currentStock: 55,
         unitsSold: 165,
         createdDate: '2025-12-03'
@@ -155,6 +165,7 @@ export const MOCK_USERS: User[] = [
         imageUrl: getProductImageUrl('Cooking Oil'),
         unit: 'liter',
         pricePerUnit: 180,
+        initialStock: 465,
         currentStock: 85,
         unitsSold: 380,
         createdDate: '2025-10-25'
@@ -165,6 +176,7 @@ export const MOCK_USERS: User[] = [
         imageUrl: getProductImageUrl('Urad Dal'),
         unit: 'kg',
         pricePerUnit: 140,
+        initialStock: 252,
         currentStock: 42,
         unitsSold: 210,
         createdDate: '2025-11-10'
@@ -175,6 +187,7 @@ export const MOCK_USERS: User[] = [
         imageUrl: getProductImageUrl('Jaggery'),
         unit: 'kg',
         pricePerUnit: 75,
+        initialStock: 430,
         currentStock: 190,
         unitsSold: 240,
         createdDate: '2025-11-18'
@@ -196,6 +209,7 @@ export const MOCK_USERS: User[] = [
         imageUrl: getProductImageUrl('Iodized Salt'),
         unit: 'kg',
         pricePerUnit: 25,
+        initialStock: 375,
         currentStock: 280,
         unitsSold: 95,
         createdDate: '2025-11-05'
@@ -206,6 +220,7 @@ export const MOCK_USERS: User[] = [
         imageUrl: getProductImageUrl('Masoor Dal'),
         unit: 'kg',
         pricePerUnit: 95,
+        initialStock: 400,
         currentStock: 120,
         unitsSold: 280,
         createdDate: '2025-12-01'
@@ -216,6 +231,7 @@ export const MOCK_USERS: User[] = [
         imageUrl: getProductImageUrl('Organic Cane Sugar'),
         unit: 'kg',
         pricePerUnit: 65,
+        initialStock: 405,
         currentStock: 210,
         unitsSold: 195,
         createdDate: '2025-11-22'
@@ -237,6 +253,7 @@ export const MOCK_USERS: User[] = [
         imageUrl: getProductImageUrl('Jowar Flour'),
         unit: 'kg',
         pricePerUnit: 50,
+        initialStock: 515,
         currentStock: 95,
         unitsSold: 420,
         createdDate: '2025-10-18'
@@ -247,6 +264,7 @@ export const MOCK_USERS: User[] = [
         imageUrl: getProductImageUrl('Rajma'),
         unit: 'kg',
         pricePerUnit: 115,
+        initialStock: 190,
         currentStock: 35,
         unitsSold: 155,
         createdDate: '2025-11-25'

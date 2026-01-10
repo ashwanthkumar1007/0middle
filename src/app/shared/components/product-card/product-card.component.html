@@ -30,6 +30,17 @@
       </div>
     </div>
 
+    <div class="product-card__stats" *ngIf="product.initialStock">
+      <div class="product-card__stat">
+        <span class="product-card__stat-label">Initial Stock:</span>
+        <span class="product-card__stat-value">{{ product.initialStock }} {{ product.unit }}</span>
+      </div>
+      <div class="product-card__stat">
+        <span class="product-card__stat-label">Expected Revenue:</span>
+        <span class="product-card__stat-value">{{ formattedExpectedRevenue }}</span>
+      </div>
+    </div>
+
     <button 
       type="button"
       class="product-card__btn"

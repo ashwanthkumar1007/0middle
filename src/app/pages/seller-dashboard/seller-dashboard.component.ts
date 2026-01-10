@@ -74,7 +74,7 @@ export class SellerDashboardComponent implements OnInit {
     if (!this.user) return;
 
     const totalProducts = this.user.products.length;
-    const totalSold = this.user.products.reduce((sum: number, p: Product) => sum + p.unitsSold, 0);
+    const totalSold = this.user.products.reduce((sum: number, p: Product) => sum + (p.unitsSold || 0), 0);
     const totalRevenue = this.userService.calculateTotalSalesAmount(this.user);
 
     this.statsCards = [
@@ -148,14 +148,20 @@ export class SellerDashboardComponent implements OnInit {
   onSaveProduct(updatedProduct: Product): void {
     if (!this.user) return;
 
-    // Update product
-    this.productService.updateProduct(this.user.id, updatedProduct.productId, updatedProduct);
-
-    // Reload user data
-    this.loadUserData();
-
-    // Close modal
-    this.closeProductModal();
+    // Check if this is adding a new product or updating existing
+    if (!updatedProduct.productId || updatedProduct.productId === '') {
+      // Adding new product
+      this.onAddProduct(updatedProduct);
+    } else {
+      // Updating existing product
+      this.productService.updateProduct(this.user.id, updatedProduct.productId, updatedProduct);
+      
+      // Reload user data
+      this.loadUserData();
+      
+      // Close modal
+      this.closeProductModal();
+    }
   }
 
   /**
@@ -178,16 +184,8 @@ export class SellerDashboardComponent implements OnInit {
    * Open add product modal
    */
   openAddProductModal(): void {
-    this.selectedProduct = {
-      productId: '',
-      name: '',
-      imageUrl: '',
-      currentStock: 0,
-      unit: 'kg',
-      pricePerUnit: 0,
-      unitsSold: 0,
-      createdDate: new Date().toISOString()
-    };
+    // Use ProductService factory method to create empty product with all required fields
+    this.selectedProduct = this.productService.createEmptyProduct();
     this.isEditMode = true;
     this.isProductModalOpen = true;
   }

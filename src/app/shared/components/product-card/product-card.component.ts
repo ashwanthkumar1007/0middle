@@ -43,4 +43,20 @@ export class ProductCardComponent {
   get formattedPrice(): string {
     return this.productService.formatPrice(this.product.pricePerUnit);
   }
+
+  /**
+   * Get expected revenue (initial stock × price per unit)
+   */
+  get expectedRevenue(): number {
+    const initialStock = this.product.initialStock || 0;
+    const pricePerUnit = this.product.pricePerUnit || 0;
+    return initialStock * pricePerUnit;
+  }
+
+  /**
+   * Get formatted expected revenue
+   */
+  get formattedExpectedRevenue(): string {
+    return this.productService.formatPrice(this.expectedRevenue);
+  }
 }

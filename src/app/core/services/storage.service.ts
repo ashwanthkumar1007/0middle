@@ -75,4 +75,39 @@ export class StorageService {
   isAuthenticated(): boolean {
     return this.getMobileNumber() !== null;
   }
+
+  /**
+   * Generic method to get item from localStorage
+   */
+  getItem<T>(key: string): T | null {
+    try {
+      const item = localStorage.getItem(key);
+      return item ? JSON.parse(item) : null;
+    } catch (error) {
+      console.error(`Failed to get item ${key}:`, error);
+      return null;
+    }
+  }
+
+  /**
+   * Generic method to set item in localStorage
+   */
+  setItem<T>(key: string, value: T): void {
+    try {
+      localStorage.setItem(key, JSON.stringify(value));
+    } catch (error) {
+      console.error(`Failed to set item ${key}:`, error);
+    }
+  }
+
+  /**
+   * Remove item from localStorage
+   */
+  removeItem(key: string): void {
+    try {
+      localStorage.removeItem(key);
+    } catch (error) {
+      console.error(`Failed to remove item ${key}:`, error);
+    }
+  }
 }

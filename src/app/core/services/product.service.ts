@@ -30,6 +30,24 @@ export class ProductService {
   }
 
   /**
+   * Create a new product object with default values
+   * This ensures all products have consistent structure
+   */
+  createEmptyProduct(): Product {
+    return {
+      productId: this.generateProductId(),
+      name: '',
+      imageUrl: '',
+      currentStock: 0,
+      initialStock: 0,
+      unit: 'kg',
+      pricePerUnit: 0,
+      unitsSold: 0,
+      createdDate: new Date().toISOString().split('T')[0]
+    };
+  }
+
+  /**
    * Add a new product for a user
    */
   addProduct(userId: string, product: Product): boolean {
@@ -48,6 +66,16 @@ export class ProductService {
       // Set created date if not provided
       if (!product.createdDate) {
         product.createdDate = new Date().toISOString().split('T')[0];
+      }
+
+      // Set initialStock to currentStock if not provided (for new products)
+      if (!product.initialStock) {
+        product.initialStock = product.currentStock;
+      }
+
+      // Initialize unitsSold if not provided
+      if (product.unitsSold === undefined) {
+        product.unitsSold = 0;
       }
 
       // Add product to user's products array
@@ -146,7 +174,7 @@ export class ProductService {
    * Calculate total revenue for a product
    */
   calculateProductRevenue(product: Product): number {
-    return product.pricePerUnit * product.unitsSold;
+    return product.pricePerUnit * (product.unitsSold || 0);
   }
 
   /**

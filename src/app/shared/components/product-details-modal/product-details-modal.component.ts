@@ -122,6 +122,23 @@ export class ProductDetailsModalComponent implements OnInit, OnChanges {
   }
 
   /**
+   * Get expected revenue (initial stock × price per unit)
+   */
+  get expectedRevenue(): number {
+    if (!this.product) return 0;
+    const initialStock = this.product.initialStock || 0;
+    const pricePerUnit = this.product.pricePerUnit || 0;
+    return initialStock * pricePerUnit;
+  }
+
+  /**
+   * Get formatted expected revenue
+   */
+  get formattedExpectedRevenue(): string {
+    return this.productService.formatPrice(this.expectedRevenue);
+  }
+
+  /**
    * Get formatted quantity
    */
   get formattedQuantity(): string {
@@ -161,11 +178,21 @@ export class ProductDetailsModalComponent implements OnInit, OnChanges {
 
     this.isSubmitting = true;
 
+    const formValue = this.productForm.value;
+    
     const updatedProduct: Product = {
       ...this.product!,
-      ...this.productForm.value,
-      createdDate: this.product?.createdDate || new Date().toISOString()
+      ...formValue,
+      createdDate: this.product?.createdDate || new Date().toISOString().split('T')[0]
     };
+
+    // For new products, set initialStock to currentStock
+    if (!updatedProduct.productId || updatedProduct.productId === '') {
+      updatedProduct.initialStock = formValue.currentStock;
+    } else if (!updatedProduct.initialStock) {
+      // For existing products without initialStock, preserve it or set it
+      updatedProduct.initialStock = this.product?.initialStock || formValue.currentStock;
+    }
 
     this.save.emit(updatedProduct);
     this.isSubmitting = false;

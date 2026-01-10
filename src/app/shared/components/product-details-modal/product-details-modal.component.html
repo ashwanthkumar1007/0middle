@@ -125,6 +125,17 @@
         </span>
       </div>
 
+      <!-- Initial Stock (Read-only for existing products) -->
+      <div class="form-group" *ngIf="!isEditMode && product?.initialStock">
+        <label class="form-label">Initial Stock Listed</label>
+        <input 
+          type="text"
+          class="form-input"
+          [value]="(product?.initialStock || 0) + ' ' + (product?.unit || '')"
+          readonly
+          disabled>
+      </div>
+
       <!-- Units Sold -->
       <div class="form-group">
         <label class="form-label" for="sold">Units Sold</label>
@@ -137,10 +148,16 @@
           min="0">
       </div>
 
-      <!-- Revenue (Read-only) -->
+      <!-- Revenue Stats (Read-only) -->
       <div class="revenue-section" *ngIf="!isEditMode">
-        <div class="revenue-label">Total Revenue</div>
-        <div class="revenue-value">{{ formattedRevenue }}</div>
+        <div class="revenue-item">
+          <div class="revenue-label">Expected Revenue</div>
+          <div class="revenue-value">{{ formattedExpectedRevenue }}</div>
+        </div>
+        <div class="revenue-item">
+          <div class="revenue-label">Actual Revenue</div>
+          <div class="revenue-value">{{ formattedRevenue }}</div>
+        </div>
       </div>
 
       <!-- Date Added (Read-only) -->

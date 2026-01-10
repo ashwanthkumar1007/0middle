@@ -168,8 +168,19 @@
   padding: $spacing-md;
   margin-bottom: $spacing-md;
   display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+}
+
+.revenue-item {
+  display: flex;
   justify-content: space-between;
   align-items: center;
+  
+  &:not(:last-child) {
+    padding-bottom: $spacing-sm;
+    border-bottom: 1px solid rgba($gray-900, 0.1);
+  }
 }
 
 .revenue-label {
@@ -179,7 +190,7 @@
 }
 
 .revenue-value {
-  font-size: $font-size-xl;
+  font-size: $font-size-lg;
   font-weight: $font-weight-bold;
   color: $gray-900;
 }
