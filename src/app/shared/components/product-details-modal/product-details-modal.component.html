@@ -96,11 +96,11 @@
             id="unit"
             class="form-input"
             formControlName="unit">
-            <option value="kg">kg</option>
-            <option value="quintal">quintal</option>
-            <option value="ton">ton</option>
-            <option value="bag">bag</option>
-            <option value="piece">piece</option>
+            <option 
+              *ngFor="let unit of availableUnits" 
+              [value]="unit.value">
+              {{ unit.label }}
+            </option>
           </select>
         </div>
       </div>

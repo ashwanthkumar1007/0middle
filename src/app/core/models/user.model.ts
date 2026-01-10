@@ -1,3 +1,5 @@
+import { UnitType } from '../constants/units.constants';
+
 /**
  * User model representing a farmer/seller
  */
@@ -19,7 +21,7 @@ export interface Product {
   productId: string;
   name: string;
   imageUrl: string;
-  unit: 'kg' | 'quintal' | 'bag' | 'ton' | 'piece';
+  unit: UnitType;
   pricePerUnit: number;
   currentStock: number;
   unitsSold: number;

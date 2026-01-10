@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Product } from '../../../core/models/user.model';
 import { ProductService } from '../../../core/services/product.service';
+import { UNIT_CONFIGS, UnitConfig } from '../../../core/constants/units.constants';
 
 @Component({
   selector: 'app-product-details-modal',
@@ -21,6 +22,9 @@ export class ProductDetailsModalComponent implements OnInit, OnChanges {
 
   productForm!: FormGroup;
   isSubmitting = false;
+  
+  // Make units available to template
+  availableUnits: UnitConfig[] = UNIT_CONFIGS;
 
   constructor(
     private fb: FormBuilder,
