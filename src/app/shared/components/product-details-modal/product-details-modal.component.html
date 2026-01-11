@@ -132,11 +132,10 @@
           type="text"
           class="form-input"
           [value]="(product?.initialStock || 0) + ' ' + (product?.unit || '')"
-          readonly
-          disabled>
+          readonly>
       </div>
 
-      <!-- Units Sold -->
+      <!-- Units Sold (Auto-calculated) -->
       <div class="form-group">
         <label class="form-label" for="sold">Units Sold</label>
         <input 
@@ -144,18 +143,20 @@
           id="sold"
           class="form-input"
           formControlName="unitsSold"
-          placeholder="10"
-          min="0">
+          placeholder="0"
+          min="0"
+          readonly>
+        <small class="form-hint">Calculated as: Initial Stock - Current Stock</small>
       </div>
 
       <!-- Revenue Stats (Read-only) -->
-      <div class="revenue-section" *ngIf="!isEditMode">
+      <div class="revenue-section" *ngIf="!isEditMode || isEditMode">
         <div class="revenue-item">
-          <div class="revenue-label">Expected Revenue</div>
+          <div class="revenue-label">Expected Revenue (Remaining Stock)</div>
           <div class="revenue-value">{{ formattedExpectedRevenue }}</div>
         </div>
         <div class="revenue-item">
-          <div class="revenue-label">Actual Revenue</div>
+          <div class="revenue-label">Actual Revenue (Units Sold)</div>
           <div class="revenue-value">{{ formattedRevenue }}</div>
         </div>
       </div>

@@ -52,16 +52,16 @@
     <h2 class="dashboard__section-title">Your Products</h2>
 
     <!-- Products Grid -->
-    <div class="products-grid" *ngIf="user.products.length > 0">
+    <div class="products-grid" *ngIf="products.length > 0">
       <app-product-card
-        *ngFor="let product of user.products"
+        *ngFor="let product of products"
         [product]="product"
         (viewDetails)="openProductModal(product)">
       </app-product-card>
     </div>
 
     <!-- Empty State -->
-    <div class="empty-state" *ngIf="user.products.length === 0">
+    <div class="empty-state" *ngIf="products.length === 0">
       <div class="empty-state__icon">📦</div>
       <h3 class="empty-state__title">No Products Yet</h3>
       <p class="empty-state__message">

@@ -10,7 +10,7 @@ export const MOCK_USERS: User[] = [
   {
     id: 'user-001',
     name: 'Ash',
-    address: 'Village Kheda, Tehsil Merta, District Nagaur, Rajasthan - 341510',
+    address: 'Perundurai Road, Erode - 638052, Tamil Nadu',
     mobileNumber: '9876543210',
     rating: 4.8,
     totalProductsSold: 1250,
@@ -65,7 +65,7 @@ export const MOCK_USERS: User[] = [
   {
     id: 'user-002',
     name: 'Arun',
-    address: 'Taluka Anand, District Kheda, Gujarat - 388001',
+    address: 'Bhavani Town, Erode - 638301, Tamil Nadu',
     mobileNumber: '9123456789',
     rating: 4.6,
     totalProductsSold: 980,
@@ -98,7 +98,7 @@ export const MOCK_USERS: User[] = [
   {
     id: 'user-003',
     name: 'Tom',
-    address: 'Block Gola Gokaran Nath, District Lakhimpur Kheri, Uttar Pradesh - 262802',
+    address: 'Gobichettipalayam, Erode - 638476, Tamil Nadu',
     mobileNumber: '9988776655',
     rating: 4.9,
     totalProductsSold: 1580,
@@ -153,7 +153,7 @@ export const MOCK_USERS: User[] = [
   {
     id: 'user-004',
     name: 'Dhinesh',
-    address: 'Mandal Medak, District Medak, Telangana - 502110',
+    address: 'Sathyamangalam, Erode - 638401, Tamil Nadu',
     mobileNumber: '9445566778',
     rating: 4.7,
     totalProductsSold: 720,
@@ -197,7 +197,7 @@ export const MOCK_USERS: User[] = [
   {
     id: 'user-005',
     name: 'Sam',
-    address: 'Tehsil Malkapur, District Buldana, Maharashtra - 443101',
+    address: 'Chennimalai, Erode - 638051, Tamil Nadu',
     mobileNumber: '9001122334',
     rating: 4.5,
     totalProductsSold: 560,
@@ -241,7 +241,7 @@ export const MOCK_USERS: User[] = [
   {
     id: 'user-006',
     name: 'Raj',
-    address: 'Block Saran, District Chapra, Bihar - 841301',
+    address: 'Kavindapadi, Erode - 638455, Tamil Nadu',
     mobileNumber: '9667788990',
     rating: 4.4,
     totalProductsSold: 890,

@@ -1,6 +1,7 @@
-import { Component, Input, Output, EventEmitter, OnInit, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit, OnChanges, OnDestroy, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { Subscription } from 'rxjs';
 import { Product } from '../../../core/models/user.model';
 import { ProductService } from '../../../core/services/product.service';
 import { UNIT_CONFIGS, UnitConfig } from '../../../core/constants/units.constants';
@@ -12,7 +13,7 @@ import { UNIT_CONFIGS, UnitConfig } from '../../../core/constants/units.constant
   templateUrl: './product-details-modal.component.html',
   styleUrls: ['./product-details-modal.component.scss']
 })
-export class ProductDetailsModalComponent implements OnInit, OnChanges {
+export class ProductDetailsModalComponent implements OnInit, OnChanges, OnDestroy {
   @Input() isOpen = false;
   @Input() product: Product | null = null;
   @Input() isEditMode = false;
@@ -22,6 +23,7 @@ export class ProductDetailsModalComponent implements OnInit, OnChanges {
 
   productForm!: FormGroup;
   isSubmitting = false;
+  private subscriptions: Subscription[] = [];
   
   // Make units available to template
   availableUnits: UnitConfig[] = UNIT_CONFIGS;
@@ -33,32 +35,84 @@ export class ProductDetailsModalComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     this.initializeForm();
+    this.setupDynamicCalculations();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     // Reinitialize form when product or editMode changes
     if ((changes['product'] || changes['isEditMode']) && this.productForm) {
       this.initializeForm();
+      this.setupDynamicCalculations();
     }
+  }
+
+  ngOnDestroy(): void {
+    // Clean up subscriptions to prevent memory leaks
+    this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 
   /**
    * Initialize the form with product data or empty values
    */
   private initializeForm(): void {
+    const maxStock = this.product?.initialStock || Number.MAX_SAFE_INTEGER;
+    
     this.productForm = this.fb.group({
       name: [this.product?.name || '', [Validators.required, Validators.minLength(3)]],
       imageUrl: [this.product?.imageUrl || ''],
-      currentStock: [this.product?.currentStock || 0, [Validators.required, Validators.min(0)]],
+      currentStock: [
+        this.product?.currentStock || 0, 
+        [Validators.required, Validators.min(0), Validators.max(maxStock)]
+      ],
       unit: [this.product?.unit || 'kg', [Validators.required]],
       pricePerUnit: [this.product?.pricePerUnit || 0, [Validators.required, Validators.min(0.01)]],
-      unitsSold: [this.product?.unitsSold || 0, [Validators.required, Validators.min(0)]]
+      unitsSold: [{ value: this.product?.unitsSold || 0, disabled: true }] // Always calculated, never editable
     });
 
     // Disable form if not in edit mode
     if (!this.isEditMode) {
       this.productForm.disable();
     }
+  }
+
+  /**
+   * Setup dynamic calculations for stock and revenue
+   */
+  private setupDynamicCalculations(): void {
+    // Clear previous subscriptions
+    this.subscriptions.forEach(sub => sub.unsubscribe());
+    this.subscriptions = [];
+
+    if (!this.productForm) return;
+
+    // Listen to currentStock changes
+    const currentStockSub = this.productForm.get('currentStock')?.valueChanges
+      .subscribe(() => this.recalculateMetrics());
+    
+    // Listen to pricePerUnit changes
+    const priceSub = this.productForm.get('pricePerUnit')?.valueChanges
+      .subscribe(() => this.recalculateMetrics());
+    
+    if (currentStockSub) this.subscriptions.push(currentStockSub);
+    if (priceSub) this.subscriptions.push(priceSub);
+
+    // Initial calculation
+    this.recalculateMetrics();
+  }
+
+  /**
+   * Recalculate all metrics based on current form values
+   */
+  private recalculateMetrics(): void {
+    const initialStock = this.product?.initialStock || 0;
+    const currentStock = this.productForm?.get('currentStock')?.value || 0;
+    const pricePerUnit = this.productForm?.get('pricePerUnit')?.value || 0;
+    
+    // Calculate units sold (initialStock - currentStock)
+    const unitsSold = Math.max(0, initialStock - currentStock);
+    
+    // Update unitsSold in form (without triggering valueChanges)
+    this.productForm?.patchValue({ unitsSold }, { emitEvent: false });
   }
 
   /**
@@ -97,11 +151,12 @@ export class ProductDetailsModalComponent implements OnInit, OnChanges {
   }
 
   /**
-   * Get calculated product revenue
+   * Get calculated product revenue (actual revenue from sold units)
    */
   get productRevenue(): number {
-    if (!this.product) return 0;
-    return this.productService.calculateProductRevenue(this.product);
+    const unitsSold = this.productForm?.get('unitsSold')?.value || this.product?.unitsSold || 0;
+    const pricePerUnit = this.productForm?.get('pricePerUnit')?.value || this.product?.pricePerUnit || 0;
+    return unitsSold * pricePerUnit;
   }
 
   /**
@@ -115,20 +170,19 @@ export class ProductDetailsModalComponent implements OnInit, OnChanges {
   }
 
   /**
-   * Get formatted revenue
+   * Get formatted revenue (actual revenue from units sold)
    */
   get formattedRevenue(): string {
     return this.productService.formatPrice(this.productRevenue);
   }
 
   /**
-   * Get expected revenue (initial stock × price per unit)
+   * Get expected revenue (revenue from remaining current stock)
    */
   get expectedRevenue(): number {
-    if (!this.product) return 0;
-    const initialStock = this.product.initialStock || 0;
-    const pricePerUnit = this.product.pricePerUnit || 0;
-    return initialStock * pricePerUnit;
+    const currentStock = this.productForm?.get('currentStock')?.value || this.product?.currentStock || 0;
+    const pricePerUnit = this.productForm?.get('pricePerUnit')?.value || this.product?.pricePerUnit || 0;
+    return currentStock * pricePerUnit;
   }
 
   /**

@@ -174,8 +174,8 @@
 
 .revenue-item {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  gap: $spacing-xs;
   
   &:not(:last-child) {
     padding-bottom: $spacing-sm;
@@ -193,6 +193,20 @@
   font-size: $font-size-lg;
   font-weight: $font-weight-bold;
   color: $gray-900;
+}
+
+.revenue-hint {
+  font-size: $font-size-xs;
+  color: $text-medium;
+  font-style: italic;
+}
+
+.form-hint {
+  display: block;
+  font-size: $font-size-xs;
+  color: $text-medium;
+  margin-top: $spacing-xs;
+  font-style: italic;
 }
 
 .info-section {
