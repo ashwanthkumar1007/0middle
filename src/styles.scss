@@ -16,12 +16,16 @@ html {
   -moz-osx-font-smoothing: grayscale;
 }
 
+// IMPORTANT: Global background color for all pages
+// To change the app-wide background color, modify this value
+// Current: White background for clean, modern look
+// Previous: Used $bg-primary (green #2d5016)
 body {
   font-family: $font-family-base;
   font-size: $font-size-base;
   line-height: $line-height-normal;
   color: $text-dark;
-  background-color: $white;
+  background-color: $white; // Global background - change here for app-wide color
   min-height: 100vh;
 }
 
