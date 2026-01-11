@@ -273,7 +273,7 @@ npm run build
 
 ```bash
 # Build for GitHub Pages
-ng build --output-path docs --base-href /omiddle/
+ng build --output-path docs --base-href /0middle/
 
 # Copy browser output to docs root
 cp -R docs/browser/* docs/
