@@ -1,10 +1,16 @@
-// Brand Colors
+// ============================================
+// COLOR SYSTEM
+// ============================================
+// To change theme colors app-wide, update these variables
+// Then rebuild the app to see changes
+
+// Brand Colors (Original theme - kept for reference)
 $brand-green: #2d5016;
 $brand-green-light: #3d6b1f;
 $brand-blue: #1976d2;
 $brand-blue-light: #2196f3;
 
-// Neutral Colors
+// Neutral Colors (Current active theme: Grey/White/Black)
 $white: #ffffff;
 $gray-50: #fafafa;
 $gray-100: #f5f5f5;
@@ -22,7 +28,9 @@ $text-dark: $gray-900;
 $text-medium: $gray-600;
 
 // Background Colors
-$bg-primary: $brand-green;
+// NOTE: $bg-primary is NOT used for body background anymore
+// Body background is set in src/styles.scss (currently $white)
+$bg-primary: $brand-green; // Used for specific green-themed components only
 $bg-card: $white;
 $bg-farmer: $brand-green;
 $bg-consumer: $brand-blue;

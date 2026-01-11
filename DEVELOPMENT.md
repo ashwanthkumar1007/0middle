@@ -93,18 +93,35 @@ src/styles/
 
 ### Colors
 
-**Brand Colors:**
+**Current Theme: Grey/White/Black** (Updated from green theme)
 
-- Primary Green: `#2d5016`
-- Primary Blue: `#1976d2`
-- White: `#ffffff`
+**How to Change Theme Colors:**
+
+1. **Global Background:** Edit `src/styles.scss` → `body { background-color: ... }`
+2. **Component Colors:** Edit `src/styles/_variables.scss` → Update color variables
+3. **Rebuild:** Run `npm start` or `ng build` to see changes
+
+**Neutral Colors (Active Theme):**
+
+- White: `#ffffff` ($white)
+- Grey 900 (Darkest): `#212121` ($gray-900) - Primary buttons, dark text
+- Grey 800: `#424242` ($gray-800) - Hover states
+- Grey 600: `#757575` ($gray-600) - Medium text
+- Grey 300: `#e0e0e0` ($gray-300) - Borders
+- Grey 200: `#eeeeee` ($gray-200) - Light borders
+- Grey 100: `#f5f5f5` ($gray-100) - Light backgrounds
+
+**Brand Colors (Legacy - kept for specific components):**
+
+- Primary Green: `#2d5016` ($brand-green) - Not used for global background
+- Primary Blue: `#1976d2` ($brand-blue) - Consumer theme
 
 **Text Colors:**
 
-- Primary (on green): `rgba(255, 255, 255, 1)`
-- Secondary (on green): `rgba(255, 255, 255, 0.7)`
-- Dark text: `#212121`
-- Medium text: `#757575`
+- Primary (on dark): `rgba(255, 255, 255, 1)`
+- Secondary (on dark): `rgba(255, 255, 255, 0.7)`
+- Dark text: `#212121` ($text-dark)
+- Medium text: `#757575` ($text-medium)
 
 ### Typography
 
