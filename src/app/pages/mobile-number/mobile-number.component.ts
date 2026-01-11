@@ -1,19 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { OtpModalComponent } from '../../shared/components/otp-modal/otp-modal.component';
+import { UserNotFoundDialogComponent } from '../../shared/components/user-not-found-dialog/user-not-found-dialog.component';
 import { MockAuthService } from '../../core/services/mock-auth.service';
 import { StorageService } from '../../core/services/storage.service';
+import { MOCK_USERS } from '../../core/data/mock-users';
 
 @Component({
   selector: 'app-mobile-number',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, OtpModalComponent],
+  imports: [CommonModule, ReactiveFormsModule, OtpModalComponent, UserNotFoundDialogComponent],
   templateUrl: './mobile-number.component.html',
   styleUrls: ['./mobile-number.component.scss']
 })
 export class MobileNumberComponent implements OnInit {
+  @ViewChild('userNotFoundDialog') userNotFoundDialog!: UserNotFoundDialogComponent;
+  
   mobileForm!: FormGroup;
   userRole: 'farmer' | 'consumer' = 'consumer';
   isLoading = false;
@@ -110,6 +114,20 @@ export class MobileNumberComponent implements OnInit {
 
     const mobileNumber = this.mobileForm.value.mobileNumber;
 
+    // Validate seller exists in MOCK_USERS (only for farmers)
+    if (this.userRole === 'farmer') {
+      const sellerExists = MOCK_USERS.some(
+        user => user.mobileNumber === mobileNumber
+      );
+
+      if (!sellerExists) {
+        this.isLoading = false;
+        // Show not found dialog
+        this.userNotFoundDialog.open();
+        return;
+      }
+    }
+
     try {
       // Simulate sending OTP
       await this.mockAuthService.sendOtp(mobileNumber);
@@ -151,6 +169,24 @@ export class MobileNumberComponent implements OnInit {
     this.mockAuthService.clearOtp();
   }
 
+
+  /**
+   * Handle create account button click from dialog
+   */
+  onCreateAccount(): void {
+    alert('Registration feature coming soon! Please contact admin to register as a seller.');
+    this.userNotFoundDialog.close();
+  }
+
+  /**
+   * Handle go back button click from dialog
+   */
+  onGoBack(): void {
+    this.userNotFoundDialog.close();
+    // Clear mobile number input
+    this.mobileForm.get('mobileNumber')?.setValue('');
+    this.mobileForm.get('mobileNumber')?.markAsUntouched();
+  }
   /**
    * Get role-specific content
    */

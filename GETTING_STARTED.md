@@ -49,7 +49,7 @@ npm start
 **Verify:**
 
 - Open browser: http://localhost:4200/
-- Should see green background with O Middle logo
+- Should see green background with 0Middle logo
 
 ### 3. Test the Application
 
@@ -57,7 +57,7 @@ npm start
 
 - [ ] Green background visible
 - [ ] Circular logo with "O" displays
-- [ ] "O Middle" text is white and bold
+- [ ] "0Middle" text is white and bold
 - [ ] Tagline is visible
 - [ ] Two cards display vertically
 - [ ] Farmer card has 🌾 icon on green
@@ -247,7 +247,7 @@ git init
 git add .
 
 # First commit
-git commit -m "Initial commit: O Middle landing page complete"
+git commit -m "Initial commit: 0Middle landing page complete"
 
 # Optional: push to GitHub
 git remote add origin <your-repo-url>

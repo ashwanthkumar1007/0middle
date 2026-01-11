@@ -2,7 +2,7 @@
 
 ## Overview
 
-The seller dashboard is a comprehensive product management interface for farmers/sellers in the O Middle e-commerce application. It provides full CRUD functionality for managing products with real-time stats tracking.
+The seller dashboard is a comprehensive product management interface for farmers/sellers in the 0Middle e-commerce application. It provides full CRUD functionality for managing products with real-time stats tracking.
 
 ## Architecture
 

@@ -95,3 +95,12 @@
   (otpVerified)="onOtpVerified()"
   (closeModal)="onCloseModal()">
 </app-otp-modal>
+
+<!-- User Not Found Dialog -->
+<app-user-not-found-dialog
+  #userNotFoundDialog
+  [mobileNumber]="mobileForm.value.mobileNumber"
+  userType="seller"
+  (createAccount)="onCreateAccount()"
+  (goBack)="onGoBack()">
+</app-user-not-found-dialog>

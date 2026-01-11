@@ -1,6 +1,6 @@
-# 📚 O Middle Documentation Index
+# 📚 0Middle Documentation Index
 
-Welcome to the O Middle documentation! This index will help you find exactly what you need.
+Welcome to the 0Middle documentation! This index will help you find exactly what you need.
 
 ---
 

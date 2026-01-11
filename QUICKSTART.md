@@ -1,6 +1,6 @@
 # 🚀 Quick Start Guide
 
-## O Middle - E-commerce Platform
+## 0Middle - E-commerce Platform
 
 ### Step 1: Install Dependencies
 

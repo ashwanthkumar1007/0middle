@@ -1,8 +1,8 @@
-# O Middle - Development Guide
+# 0Middle - Development Guide
 
 ## Project Overview
 
-O Middle is a production-ready Angular e-commerce application connecting farmers directly to consumers. The application eliminates middlemen to ensure fair prices for both parties.
+0Middle is a production-ready Angular e-commerce application connecting farmers directly to consumers. The application eliminates middlemen to ensure fair prices for both parties.
 
 ## Architecture
 
@@ -44,7 +44,7 @@ src/styles/
 2. **Branding Section**
 
    - Circular logo with "O" letter
-   - App name: "O Middle"
+   - App name: "0Middle"
    - Tagline: "Connecting farmers directly to consumers"
 
 3. **Role Selection Cards**
@@ -55,7 +55,7 @@ src/styles/
    - Each card navigates to respective portal
 
 4. **Footer**
-   - Tagline: "fair prices, zero middlemen"
+   - Tagline: "fair prices, zer0Middlemen"
 
 ### Component: RoleSelectionCardComponent
 
@@ -251,6 +251,27 @@ npm run build
 
 # Output in dist/omiddle/
 ```
+
+### Deployment to GitHub Pages
+
+```bash
+# Build for GitHub Pages
+ng build --output-path docs --base-href /omiddle/
+
+# Copy browser output to docs root
+cp -R docs/browser/* docs/
+
+# Create 404.html for SPA routing
+cp docs/index.html docs/404.html
+```
+
+**Steps:**
+
+1. Build the application with the correct base href for your repository
+2. Copy the browser build files to the docs root directory
+3. Create a 404.html file (GitHub Pages serves this for client-side routing)
+4. Commit and push the `docs/` folder to your repository
+5. Enable GitHub Pages in repository settings → Pages → Source: `main` branch → `/docs` folder
 
 ## Best Practices Implemented
 

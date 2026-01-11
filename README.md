@@ -1,10 +1,10 @@
-# O Middle
+# 0Middle
 
 E-commerce application connecting farmers directly to consumers.
 
 ## Overview
 
-O Middle is a platform that eliminates middlemen, allowing farmers to sell their produce directly to consumers at fair prices.
+0Middle is a platform that eliminates middlemen, allowing farmers to sell their produce directly to consumers at fair prices.
 
 ## Tech Stack
 

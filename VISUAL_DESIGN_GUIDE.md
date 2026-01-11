@@ -16,7 +16,7 @@
 │         │             │                 │
 │         └─────────────┘                │
 │                                         │
-│           O Middle                      │
+│           0Middle                      │
 │        (white, bold)                    │
 │                                         │
 │  Connecting farmers directly            │
@@ -39,7 +39,7 @@
 │ │                                     ││
 │ └─────────────────────────────────────┘│
 │                                         │
-│    fair prices, zero middlemen         │
+│    fair prices, zer0Middlemen         │
 │      (white, low emphasis)              │
 │                                         │
 └─────────────────────────────────────────┘
@@ -63,7 +63,7 @@
 ### 2. App Name
 
 ```
-O Middle
+0Middle
 
 Font: Inter, Bold (700)
 Size: 32px (mobile), 40px (desktop)
@@ -128,7 +128,7 @@ Hover: Lifts up 4px with larger shadow
 ### 5. Footer
 
 ```
-fair prices, zero middlemen
+fair prices, zer0Middlemen
 
 Font: Inter, Regular (400)
 Size: 14px (mobile), 16px (desktop)

@@ -1,0 +1,55 @@
+<!-- Modal Overlay -->
+<div 
+  *ngIf="isOpen"
+  class="dialog-overlay" 
+  (click)="close()">
+  
+  <!-- Dialog Content -->
+  <div 
+    class="dialog" 
+    (click)="onModalClick($event)"
+    role="alertdialog"
+    aria-labelledby="dialog-title"
+    aria-describedby="dialog-description">
+    
+    <!-- Warning Icon -->
+    <div class="dialog__icon">
+      <span class="icon-warning">⚠️</span>
+    </div>
+    
+    <!-- Title -->
+    <h2 id="dialog-title" class="dialog__title">
+      Not a Registered {{ userTypeLabel }}
+    </h2>
+    
+    <!-- Message -->
+    <p id="dialog-description" class="dialog__message">
+      The mobile number <strong>{{ maskedMobileNumber }}</strong> 
+      is not registered in our system.
+    </p>
+    
+    <p class="dialog__info">
+      To sell products on 0Middle, you need a seller account.
+    </p>
+    
+    <p class="dialog__question">
+      Would you like to register?
+    </p>
+    
+    <!-- Actions -->
+    <div class="dialog__actions">
+      <button 
+        type="button"
+        class="btn btn--primary"
+        (click)="onCreateAccount()">
+        Create Account
+      </button>
+      <button 
+        type="button"
+        class="btn btn--secondary"
+        (click)="onGoBack()">
+        Go Back
+      </button>
+    </div>
+  </div>
+</div>

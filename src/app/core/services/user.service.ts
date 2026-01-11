@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { User } from '../models/user.model';
-import { initializeMockData } from '../data/mock-users';
+import { initializeMockData, MOCK_USERS } from '../data/mock-users';
 
 /**
  * User service for managing user data
@@ -108,5 +108,30 @@ export class UserService {
     user.totalSalesAmount = this.calculateTotalSalesAmount(user);
 
     return this.updateUser(user);
+  }
+
+  /**
+   * Validate if mobile number exists as a registered seller
+   * Checks against MOCK_USERS list
+   */
+  validateSeller(mobileNumber: string): boolean {
+    return MOCK_USERS.some(user => user.mobileNumber === mobileNumber);
+  }
+
+  /**
+   * Validate if mobile number exists as a registered buyer
+   * Future implementation - currently allows all buyers
+   * TODO: Implement when buyer data is available
+   */
+  validateBuyer(mobileNumber: string): boolean {
+    // For now, return true to allow all buyers
+    return true;
+  }
+
+  /**
+   * Get seller details by mobile number from MOCK_USERS
+   */
+  getSellerByMobile(mobileNumber: string): User | undefined {
+    return MOCK_USERS.find(user => user.mobileNumber === mobileNumber);
   }
 }
