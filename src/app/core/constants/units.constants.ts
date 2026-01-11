@@ -9,7 +9,6 @@
  * - Reusable in seller and buyer pages
  * - Prevents bugs from inconsistent unit definitions
  */
-
 /**
  * Unit configuration interface
  */
