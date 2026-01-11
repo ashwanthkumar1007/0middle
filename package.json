@@ -6,11 +6,12 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build:prod": "ng build --output-path docs --base-href /0middle/",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr": "node dist/omiddle/server/main.js",
-    "build:ssr": "ng build && ng run omiddle:server",
-    "prerender": "ng run omiddle:prerender"
+    "serve:ssr": "node dist/0middle/server/main.js",
+    "build:ssr": "ng build && ng run 0middle:server",
+    "prerender": "ng run 0middle:prerender"
   },
   "private": true,
   "dependencies": {
